@@ -1,0 +1,210 @@
+/* styles.css */
+
+:root {
+  --font-family: "Nunito", sans-serif;
+  --primary-color: #4a90e2;
+  --correct-color: #34d399;
+  --incorrect-color: #f87171;
+  --card-bg: #ffffff;
+  --text-color: #333;
+  --container-bg: rgba(255, 255, 255, 0.9);
+  --sequence-bg: rgba(227, 237, 247, 0.8);
+  --border-color: #a8c5e5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  /* A soft, friendly gradient background */
+  background-color: #fde68a;
+  background-image: linear-gradient(
+    to top,
+    #fde68a 0%,
+    #fce38a 50%,
+    #f38181 100%
+  );
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+#app-container {
+  width: 100%;
+  max-width: 1000px;
+  background-color: var(--container-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.header {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 30px 0;
+}
+
+p {
+    font-size: 2rem;
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+#sequence-container {
+  background-color: var(--sequence-bg);
+  border: 3px solid var(--border-color);
+  border-radius: 30px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+#sequence-display,
+#answer-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  will-change: transform, box-shadow, opacity;
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.card p {
+  margin-top: 15px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #555;
+}
+
+.option-card {
+  cursor: pointer;
+}
+
+.option-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.option-card.correct {
+  box-shadow: 0 0 0 12px var(--correct-color);
+  animation: correct-answer-pulse 0.5s ease-in-out;
+}
+
+.option-card.incorrect {
+  box-shadow: 0 0 0 12px var(--incorrect-color);
+  animation: incorrect-answer-shake 0.5s ease-in-out;
+}
+
+.option-card.fading-out {
+  animation: fade-out 0.5s ease-in-out forwards;
+}
+
+.card.moving {
+  position: absolute;
+  z-index: 10;
+  transition: top 0.5s ease-in-out, left 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+#feedback-message {
+  margin-top: 40px;
+  font-size: 4rem;
+  font-weight: 800;
+  height: 80px; /* Reserve space */
+}
+
+#next-button {
+  margin-top: 30px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+@keyframes correct-answer-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes incorrect-answer-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-15px); }
+  75% { transform: translateX(15px); }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}

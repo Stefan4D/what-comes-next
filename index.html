@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>What Comes Next?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app-container">
+      <!-- Start Screen -->
+      <div id="start-screen" class="screen">
+        <h1 class="title">What Comes Next?</h1>
+        <button id="start-button" class="button">Start</button>
+      </div>
+
+      <!-- Game Screen -->
+      <div id="game-screen" class="screen hidden">
+        <div id="game-content">
+          <div id="sequence-container">
+            <h2 class="header">The Sequence:</h2>
+            <div id="sequence-display">
+              <!-- Sequence cards will be loaded here -->
+            </div>
+          </div>
+
+          <h2 id="question-text" class="header">What comes next?</h2>
+
+          <div id="answer-options">
+            <!-- Answer choice cards will be loaded here -->
+          </div>
+        </div>
+
+        <div id="feedback-message">
+          <!-- Feedback like "Great job!" will appear here -->
+        </div>
+        
+        <!-- This button will be hidden and controlled by JS -->
+        <button id="next-button" class="button hidden">Next</button>
+      </div>
+
+      <!-- End Screen -->
+      <div id="end-screen" class="screen hidden">
+        <h1 class="title">Well Done!</h1>
+        <p>You've completed all the sequences.</p>
+        <button id="play-again-button" class="button">Play Again</button>
+      </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
