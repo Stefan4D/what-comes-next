@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setTimeout(() => {
-      card.classList.remove('moving', 'correct', 'option-card');
+      card.classList.remove('moving', 'option-card');
       card.removeAttribute('style');
       sequenceDisplay.replaceChild(card, placeholder);
       answerOptions.innerHTML = '';
